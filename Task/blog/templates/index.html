@@ -1,11 +1,13 @@
-{% extends "layout.html" %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Hello
 
-{% block body %}
-  <h1>Tasks</h1>
-    <ul>
-      {% for task in tasks %}
-        <li>{{ task }}</li>
-      {% endfor %}
-    </ul>
-    <a href="{% url 'add' %}">Add a new task</a>
-{% endblock %}
+<a href="{% url 'register' %}"><h1>Register</h1></a>
+<a href="{% url 'login' %}"><h1>Login</h1></a>
+</body>
+</html>
