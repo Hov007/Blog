@@ -11,10 +11,11 @@ from django.contrib import messages
 
 from django.contrib.auth.decorators import login_required
 
+
 #Create your views here
 from .models import *
 from .forms import CreateUserForm
-
+from django.views.generic import ListView, DetailView
 
 def index(request):
     return render(request, "index.html")
@@ -59,4 +60,26 @@ def logoutUser(request):
 # Decorator that bans home page without loging in
 @login_required(login_url='login')
 def home(request):
-    return render(request, "home.html")
+    # Showing all posts from db
+    post = Post.objects.all()
+    context = {"post": post}
+    return render(request, "home.html", context)
+
+@login_required(login_url='login')
+def addPost(request):
+    if request.method == 'POST':
+        post = Post()
+        # taking loged in user
+        user = User.objects.get(username=request.user.username)
+        # adding post under user's name
+        post.title = request.POST.get('title')
+        post.user = user
+        post.body = request.POST.get('content')
+        post.save()
+        return redirect('home')
+    context = {}
+    return render(request, "add.html", context)
+
+
+# user = User.objects.get(username = request.user.username)
+# post = Post.objects.filter(user=user)
