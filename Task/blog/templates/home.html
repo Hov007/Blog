@@ -8,11 +8,16 @@
   Welcome {{ request.user }}
   <span><a href="{% url 'logout' %}">Logout</a></span>
   <span><a href="{% url 'add' %}">Add a Post</a></span>
+  <span><a href="{% url 'myposts' %}">My Posts</a></span>
   <ul>
     {% for post in post %}
-      <li>{{ post.title }} - {{ post.user }}<br/>
-      {{ post.body }}</li>
+    <li><a href="{% url 'view' post.id%}">{{ post.id }}  {{ post.title }} - {{ post.user }}</a></li>
+
+      <!--<li>{{ post.title }} - {{ post.user }}<br/>
+      {{ post.body }}</li>-->
     {% endfor %}
+
+
   </ul>
 
 </body>

@@ -66,6 +66,12 @@ def home(request):
     return render(request, "home.html", context)
 
 @login_required(login_url='login')
+def viewPost(request, post_id):
+    post = Post.objects.get(id=post_id)
+    context = {"post": post}
+    return render(request, "view.html", context)
+
+@login_required(login_url='login')
 def addPost(request):
     if request.method == 'POST':
         post = Post()
@@ -80,6 +86,36 @@ def addPost(request):
     context = {}
     return render(request, "add.html", context)
 
+@login_required(login_url='login')
+def myPost(request):
+    # Showing only post of the loged in user
+    user = User.objects.get(username = request.user.username)
+    post = Post.objects.filter(user=user)
+    context = {"post": post}
+    return render(request, "myposts.html", context)
 
-# user = User.objects.get(username = request.user.username)
-# post = Post.objects.filter(user=user)
+@login_required(login_url='login')
+def edit(request, post_id):
+    post = Post.objects.get(id=post_id)
+    if request.method == 'POST':
+        post = Post.objects.get(id=post_id)
+        user = User.objects.get(username=request.user.username)
+        post.title = request.POST.get('title')
+        post.body = request.POST.get('content')
+        post.body = request.POST.get('content')
+        post.save()
+        return redirect('myposts')
+    context = {"post": post}
+    return render(request, "edit.html", context)
+
+# @login_required(login_url='login')
+# def deletePost(request, post_id):
+#     post = Post.objects.get(id=post_id)
+#     post.delete()
+#     return redirect("edit")
+#     # if request.method == 'POST':
+#     #     post = Post.objects.get(id=post_id)
+#     #     post.delete()
+#     #     return redirect('edit')
+#     # context = {"post": post}
+#     # return render(request, "edit.html", context)

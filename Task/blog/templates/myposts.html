@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <ul>
+    {% for post in post %}
+      <li>{{ post.title }}<br/>
+      {{ post.body }} </li><span><a href="{% url 'edit' post.id %}">Edit</a></span>
+      
+    {% endfor %}
+  </ul>
+
+
+</body>
+</html>
