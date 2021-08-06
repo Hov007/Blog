@@ -8,10 +8,11 @@ urlpatterns = [
     path("register/", views.register, name="register"),
     path("login/", views.loginPage, name="login"),
     path("logout/", views.logoutUser, name="logout"),
-    path("home", views.home, name="home"),
+    path("home/", views.home, name="home"),
     path("home/<int:post_id>/", views.viewPost, name="view"),
     path("add/", views.addPost, name="add"),
     path("myposts/", views.myPost, name="myposts"),
     path("myposts/<int:post_id>/", views.edit, name="edit"),
+    path("edit/<int:post_id>/", views.deletePost, name="deletePost"),
 
 ]

@@ -6,16 +6,12 @@ from django.urls import reverse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.forms import UserCreationForm
 
-
 from django.contrib import messages
-
 from django.contrib.auth.decorators import login_required
-
 
 #Create your views here
 from .models import *
 from .forms import CreateUserForm
-from django.views.generic import ListView, DetailView
 
 def index(request):
     return render(request, "index.html")
@@ -77,18 +73,19 @@ def addPost(request):
         post = Post()
         # taking loged in user
         user = User.objects.get(username=request.user.username)
-        # adding post under user's name
+        # adding post under the user's name
         post.title = request.POST.get('title')
         post.user = user
         post.body = request.POST.get('content')
         post.save()
+        messages.success(request, "Post is added!")
         return redirect('home')
     context = {}
     return render(request, "add.html", context)
 
 @login_required(login_url='login')
 def myPost(request):
-    # Showing only post of the loged in user
+    # Showing only post of the logged in user
     user = User.objects.get(username = request.user.username)
     post = Post.objects.filter(user=user)
     context = {"post": post}
@@ -99,23 +96,21 @@ def edit(request, post_id):
     post = Post.objects.get(id=post_id)
     if request.method == 'POST':
         post = Post.objects.get(id=post_id)
-        user = User.objects.get(username=request.user.username)
         post.title = request.POST.get('title')
         post.body = request.POST.get('content')
-        post.body = request.POST.get('content')
         post.save()
+        messages.success(request, "Post is updated!")
         return redirect('myposts')
     context = {"post": post}
     return render(request, "edit.html", context)
 
-# @login_required(login_url='login')
-# def deletePost(request, post_id):
-#     post = Post.objects.get(id=post_id)
-#     post.delete()
-#     return redirect("edit")
-#     # if request.method == 'POST':
-#     #     post = Post.objects.get(id=post_id)
-#     #     post.delete()
-#     #     return redirect('edit')
-#     # context = {"post": post}
-#     # return render(request, "edit.html", context)
+@login_required(login_url='login')
+def deletePost(request, post_id):
+    post = Post.objects.get(id=post_id)
+    if request.method == 'POST':
+        post = Post.objects.get(id=post_id)
+        post.delete()
+        messages.success(request, "Post is deleted!")
+        return redirect("myposts")
+    context = {"post": post}
+    return render(request, "deletePost.html", context)

@@ -3,6 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
+    {% if messages %}
+    <ul>
+        {% for message in messages %}
+          <li>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
 </head>
 <body>
   Welcome {{ request.user }}

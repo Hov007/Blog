@@ -13,9 +13,9 @@
     <input type="text" name="content" value="{{ post.body }}" placeholder="Enter your text here...">
     <input type="submit" name="add" value="Update">
 
-    
+
   </form>
 
-
+<span><a href="{% url 'deletePost' post.id %}">Delete</a></span>
 </body>
 </html>
