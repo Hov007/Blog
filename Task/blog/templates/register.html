@@ -1,12 +1,92 @@
-<h1>Register</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
 
-<form class="" action="" method="POST">
-  {% csrf_token %}
-  {% for field in form %}
-    {{ field.label }}
-    {{ field }}
-  {% endfor %}
+  {% if messages %}
+  <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  {% load static %}
 
-  <input type="submit" name="Create User" value="Create User">
-</form>
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  	<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+          <a class="navbar-brand" href="{% url 'home' %}">Welcome to Blog</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto topnav">
+                  <li class="nav-item active">
+                      <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'add' %}">Add a Post</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'myposts' %}">My Posts</a>
+                  </li>
+
+
+              </ul>
+          </div>
+      </nav>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  {% load static %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!------ Include the above in your HEAD tag ---------->
+
+
+
+<div id="login">
+        <h3 class="text-center text-white pt-5">Login form</h3>
+        <div class="container">
+            <div id="login-row" class="row justify-content-center align-items-center">
+                <div id="login-column" class="col-md-6">
+                    <div id="login-box" class="col-md-12">
+                        <form id="login-form" class="form" action="" method="post">
+                            <h3 class="text-center text-info">Register</h3>
+                            <div class="form-group">
+
+                              {% csrf_token %}
+                                {% for field in form %}
+                                <label for="username" class="text-info">{{ field.label }}:</label>
+                                {{ field }}
+                                <br>
+                                {% endfor %}
+
+                            </div>
+                            <div class="form-group">
+
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                            </div>
+                            <div id="register-link" class="text-right">
+                              <a href="{% url 'login' %}">Login</a>
+
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

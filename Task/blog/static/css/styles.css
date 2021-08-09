@@ -8,3 +8,7 @@ h4 {
 .topnav a:hover {
     border-bottom: 3px solid red;
 }
+
+h1 {
+    color: red;
+}
