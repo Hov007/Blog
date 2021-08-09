@@ -1,9 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add</title>
-</head>
+{% extends "layout.html" %}
+{% block title %}
+<title>Add</title>
+{% endblock %}
+
+{% block body %}
 <body>
   <form class="" action="" method="POST">
     {% csrf_token %}
@@ -13,5 +13,4 @@
     <input type="text" name="content" placeholder="Enter your text here...">
     <input type="submit" name="add" value="Add a post">
   </form>
-</body>
-</html>
+{% endblock %}

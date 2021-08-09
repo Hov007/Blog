@@ -1,7 +1,15 @@
 from django.urls import path
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.conf import settings
+from django.conf.urls.static import static
+
 
 from . import views
 
+
+urlpatterns = [
+    # ... the rest of your URLconf goes here ...
+] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 # We are creating separate urls.py to give routs to our particular app
 urlpatterns = [
     path("", views.index, name="index"),

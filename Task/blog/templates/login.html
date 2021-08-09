@@ -1,19 +1,78 @@
-<h1>Login</h1>
-
-{% if messages %}
-<ul>
-    {% for message in messages %}
-      <li>{{ message }}</li>
-    {% endfor %}
-</ul>
-{% endif %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
 
 
-<form class="" action="" method="POST">
-  {% csrf_token %}
-  Username
-  <input type="text" name="username" placeholder="Username...">
-  Password
-  <input type="password" name="password" placeholder="Password...">
-  <input type="submit" name="login" value="Login">
-</form>
+  {% if messages %}
+  <ul>
+      {% for message in messages %}
+        <li>{{ message }}</li>
+      {% endfor %}
+  </ul>
+  {% endif %}
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+  {% load static %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+  	<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+          <a class="navbar-brand" href="{% url 'home' %}">Welcome to Blog</a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+          </button>
+
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav ml-auto topnav">
+                  <li class="nav-item active">
+                      <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'add' %}">Add a Post</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link" href="{% url 'myposts' %}">My Posts</a>
+                  </li>
+
+
+              </ul>
+          </div>
+      </nav>
+
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  {% load static %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
+
+
+  <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+  <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <!------ Include the above in your HEAD tag ---------->
+
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+
+      <!-- Icon -->
+      <div class="fadeIn first">
+        <img src="http://danielzawadzki.com/codepen/01/icon.svg" id="icon" alt="User Icon" />
+      </div>
+
+      <!-- Login Form -->
+      <form method="POST">
+        {% csrf_token %}
+        <input type="text" id="login" class="fadeIn second" name="username" placeholder="Username">
+        <input type="password" id="password" class="fadeIn third" name="password" placeholder="password">
+        <input type="submit" class="fadeIn fourth" value="Log In">
+      </form>
+    </div>
+  </div>
+<a href="{% url 'register' %}"><h1>Register</h1></a>
+</body>
+</html>

@@ -1,10 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
+{% extends "layout.html" %}
+{% block title %}
+<title>Edit</title>
+{% endblock %}
+
+{% block body %}
   <form class="" action="" method="POST">
     {% csrf_token %}
     Title
@@ -17,5 +16,4 @@
   </form>
 
 <span><a href="{% url 'deletePost' post.id %}">Delete</a></span>
-</body>
-</html>
+{% endblock %}

@@ -1,31 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home</title>
-    {% if messages %}
-    <ul>
-        {% for message in messages %}
-          <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-</head>
-<body>
-  Welcome {{ request.user }}
-  <span><a href="{% url 'logout' %}">Logout</a></span>
-  <span><a href="{% url 'add' %}">Add a Post</a></span>
-  <span><a href="{% url 'myposts' %}">My Posts</a></span>
-  <ul>
-    {% for post in post %}
-    <li><a href="{% url 'view' post.id%}">{{ post.id }}  {{ post.title }} - {{ post.user }}</a></li>
+{% extends "layout.html" %}
+{% block title %}
+<title>Home</title>
+{% endblock %}
 
-      <!--<li>{{ post.title }} - {{ post.user }}<br/>
-      {{ post.body }}</li>-->
-    {% endfor %}
+{% block body %}
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
+
+  {% for post in post %}
+  <section class="dl-blurbs">
+    <dl>
+      <dt><a href="{% url 'view' post.id%}">{{ post.user }}</a></dt>
+      <dd><a href="{% url 'view' post.id%}">{{ post.id }}  {{ post.title }}</a></dd>
 
 
-  </ul>
+    <!--<li>{{ post.title }} - {{ post.user }}<br/>
+    {{ post.body }}</li>-->
+    </dl>
+    </section>
+  {% endfor %}
 
-</body>
-</html>
+
+
+
+
+
+
+
+{% endblock %}
