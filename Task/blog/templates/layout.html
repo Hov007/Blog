@@ -10,7 +10,7 @@
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
-	<nav class="navbar navbar-expand-lg navbar-light bg-warning">
+	<nav id="fix" class="navbar navbar-expand-lg navbar-light bg-warning">
         <a class="navbar-brand" href="{% url 'home' %}">{% trans "Welcome to Blog" %}</a>
 				<form action="{% url 'set_language' %}" method="post">{% csrf_token %}
 			      <input name="next" type="hidden" value="{{ redirect_to }}">
