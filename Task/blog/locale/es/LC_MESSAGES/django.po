@@ -1,0 +1,91 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-08-16 16:44+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: blog/templates/add.html:18 blog/templates/layout.html:39
+msgid "Add a post"
+msgstr "Ավելացնել Փոստ"
+
+#: blog/templates/add.html:24 blog/templates/deletePost.html:22
+#: blog/templates/edit.html:21 blog/templates/home.html:22
+msgid "Title"
+msgstr "Վերնագիր"
+
+#: blog/templates/add.html:28 blog/templates/deletePost.html:26
+#: blog/templates/edit.html:25
+msgid "Content"
+msgstr "Պարունակություն"
+
+#: blog/templates/add.html:33 blog/templates/edit.html:30
+msgid "Update"
+msgstr "Թարմեցնել"
+
+#: blog/templates/deletePost.html:16
+msgid "Do you really want to delete post?"
+msgstr "Ջնջե՞լ փոստը"
+
+#: blog/templates/deletePost.html:31 blog/templates/edit.html:31
+msgid "Delete"
+msgstr "Ջնջել"
+
+#: blog/templates/deletePost.html:33
+msgid "Cancel"
+msgstr "Չեղարկել"
+
+#: blog/templates/edit.html:15
+#, fuzzy
+#| msgid "Add a post"
+msgid "Edit a post"
+msgstr "Ավելացնել Փոստ"
+
+#: blog/templates/home.html:20
+msgid "Author"
+msgstr "Հեղինակ"
+
+#: blog/templates/home.html:24
+msgid "Read more"
+msgstr "Կարդալ ավելին"
+
+#: blog/templates/index.html:13
+msgid "Register"
+msgstr "Գրանցվել"
+
+#: blog/templates/index.html:14
+msgid "Login"
+msgstr "Մտնել"
+
+#: blog/templates/layout.html:14
+msgid "Welcome to Blog"
+msgstr "Բարի Գալուստ"
+
+#: blog/templates/layout.html:36
+msgid "Home"
+msgstr "Գլխավոր"
+
+#: blog/templates/layout.html:42
+msgid "My Posts"
+msgstr "Իմ Փոստերը"
+
+#: blog/templates/layout.html:48
+msgid "Log out"
+msgstr "Դուրս Գալ"
+
+#: blog/templates/myposts.html:19
+msgid "__Edit__"
+msgstr "Խմբագրել"

@@ -1,4 +1,5 @@
 {% extends "layout.html" %}
+{% load i18n %}
 {% block title %}
 <title>Home</title>
 {% endblock %}
@@ -8,17 +9,26 @@
 
 <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
 
-  {% for post in post %}
-  <section class="dl-blurbs">
-    <dl>
-      <dt id="postuser"><a href="{% url 'view' post.id%}">Author: {{ post.user }}</a></dt>
-      <dd><a href="{% url 'view' post.id%}">Title:{{ post.title }}</a></dd>
+<div class="container">
 
-    <!--<li>{{ post.title }} - {{ post.user }}<br/>
-    {{ post.body }}</li>-->
-    </dl>
-    </section>
+
+  {% for post in post %}
+
+
+  <ul class="tilesWrap">
+    <li>
+      <h3>{% trans "Author" %}: {{ post.user }}</h3>
+      <p>
+        {% trans "Title" %}:{{ post.title }}
+      </p>
+      <button><a href="{% url 'view' post.id%}">{% trans "Read more" %}</a></button>
+    </li>
+
+  </ul>
+
 
   {% endfor %}
 
+
+</div>
 {% endblock %}

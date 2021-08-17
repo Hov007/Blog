@@ -2,7 +2,7 @@
 {% block title %}
 <title>Edit</title>
 {% endblock %}
-
+{% load i18n %}
 {% block body %}
 
   <div id="login">
@@ -12,23 +12,23 @@
                   <div id="login-column" class="col-md-6">
                       <div id="login-box" class="col-md-12">
                           <form id="login-form" class="form" action="" method="post">
-                              <h3 class="text-center text-info">Edit a Post</h3>
+                              <h3 class="text-center text-info">{% trans "Edit a post" %}</h3>
                               <div class="form-group">
 
                                 {% csrf_token %}
 
 
-                                  <label for="title" class="text-info">Title:</label><br>
+                                  <label for="title" class="text-info">{% trans "Title" %}:</label><br>
                                   <input type="text" value="{{ post.title }}" name="title" id="username" class="form-control">
                               </div>
                               <div class="form-group">
-                                  <label for="content" class="text-info">Content:</label><br>
+                                  <label for="content" class="text-info">{% trans "Content" %}:</label><br>
                                   <input type="text" value="{{ post.body }}" name="content" id="password" class="form-control">
                               </div>
                               <div class="form-group">
 
-                                  <input type="submit" name="submit" class="btn btn-info btn-md" value="Update">
-                                  <button class="btn btn-info btn-md" type="button" name="button"><a href="{% url 'deletePost' post.id %}">Delete</a></button>
+                                  <input type="submit" name="submit" class="btn btn-info btn-md" value="{% trans 'Update' %}">
+                                  <button type="button" name="button"><a  class="nav-link btn btn-danger text-white" href="{% url 'deletePost' post.id %}">{% trans "Delete" %}</a></button>
                               </div>
 
                           </form>

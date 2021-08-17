@@ -1,39 +1,42 @@
 {% extends "layout.html" %}
 {% block title %}
+{% load i18n %}
 <title>Delete</title>
 {% endblock %}
 
 {% block body %}
-    Do you really want to delete {{ post.title }} post?
-    <form class="" action="" method="POST">
-      {% csrf_token %}
-      Title
-      <input type="text" name="title", value="{{ post.title }}" placeholder="title..." >
-      Description
-      <input type="text" name="content" value="{{ post.body }}" placeholder="Enter your text here...">
-      <input type="submit" name="add" value="Delete">
+
+    <div id="login">
+            <h3 class="text-center text-white pt-5">Login form</h3>
+            <div class="container">
+                <div id="login-row" class="row justify-content-center align-items-center">
+                    <div id="login-column" class="col-md-6">
+                        <div id="login-box" class="col-md-12">
+                            <form id="login-form" class="form" action="" method="post">
+                                <h3 class="text-center text-info">{% trans "Do you really want to delete post?" %}</h3>
+                                <div class="form-group">
+
+                                  {% csrf_token %}
 
 
-    </form>
-    <span><a href="{% url 'myposts' %}">Cancel</a></span>
+                                    <label for="title" class="text-info">{% trans "Title" %}:</label><br>
+                                    <input type="text" name="title", value="{{ post.title }}" placeholder="title..." >
+                                </div>
+                                <div class="form-group">
+                                    <label for="content" class="text-info">{% trans "Content" %}:</label><br>
+                                    <input type="text" value="{{ post.body }}" name="content" id="password" class="form-control">
+                                </div>
+                                <div class="form-group">
+
+                                    <input class="nav-link btn btn-danger text-white" type="submit" name="add" value="{% trans 'Delete' %}">
+
+                                    <button class="btn btn-info btn-md" type="button" name="button"><span><a class="white" href="{% url 'myposts' %}">{% trans "Cancel" %}</a></button>
+                                </div>
+
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     {% endblock %}
-
-
-<form class="" action="" method="POST">
-  {% csrf_token %}
-  {% for field in form %}
-    {{ field.label }}
-    {{ field }}
-  {% endfor %}
-
-  <input type="submit" name="Create User" value="Create User">
-</form>
-
-
-<label for="username" class="text-info">Username:</label><br>
-
-
-                                <input type="text" name="username" id="username" class="form-control" {{ field }}
-                            </div>
-                            <div class="form-group">
-                                <label for="password" class="text-info">Password:</label><br>

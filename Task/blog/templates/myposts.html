@@ -1,18 +1,23 @@
 {% extends "layout.html" %}
+{% load i18n %}
 {% block title %}
 <title>My Posts</title>
 {% endblock %}
 
 {% block body %}
-{% load static %}
-  <h1>My Posts</h1>
-  <ul>
+  {% load static %}
+
+  <link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}"/>
+
     {% for post in post %}
-      <li>{{ post.title }}<br/>
-      {{ post.body }} </li><span><a href="{% url 'edit' post.id %}">Edit</a></span>
-
+    <ul class="tilesWrap">
+      <li>
+        <h3>{{ post.title }}</h3>
+        <p>
+          {{ post.body }}
+        </p>
+        <button><a href="{% url 'edit' post.id%}">{% trans "__Edit__" %}</a></button>
+      </li>
+    </ul>
     {% endfor %}
-  </ul>
-
-
 {% endblock %}

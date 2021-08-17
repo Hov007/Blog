@@ -9,9 +9,12 @@ from django.contrib.auth.forms import UserCreationForm
 from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
+
 #Create your views here
 from .models import *
 from .forms import CreateUserForm
+from django.utils.translation import gettext as _
+
 
 def index(request):
     return render(request, "index.html")
@@ -23,7 +26,7 @@ def register(request):
         form = CreateUserForm(request.POST)
         if form.is_valid(): # checking is form is valid
             form.save()
-            messages.success(request, "Account was created!")
+            _(messages.success(request, "Account was created!"))
 
             return redirect('login')
 
