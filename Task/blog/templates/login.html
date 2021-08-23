@@ -1,4 +1,6 @@
 {% load i18n %}
+{% load socialaccount %}
+{% providers_media_js %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -25,21 +27,7 @@
               <span class="navbar-toggler-icon"></span>
           </button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav ml-auto topnav">
-                  <li class="nav-item active">
-                      <a class="nav-link" href="{% url 'home' %}">Home <span class="sr-only">(current)</span></a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="{% url 'add' %}">Add a Post</a>
-                  </li>
-                  <li class="nav-item">
-                      <a class="nav-link" href="{% url 'myposts' %}">My Posts</a>
-                  </li>
 
-
-              </ul>
-          </div>
       </nav>
 
     <meta charset="UTF-8">
@@ -53,7 +41,7 @@
   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
   <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <!------ Include the above in your HEAD tag ---------->
+
 
 
 
@@ -79,7 +67,14 @@
                             </div>
                             <div class="form-group">
 
-                                <input type="submit" name="submit" class="btn btn-info btn-md" value="submit">
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="Log In">
+                                Log in with social account
+                                <button type="button" name="facebook">
+                                  <a href="{% provider_login_url 'facebook' method='js_sdk' %}">Facebook</a>
+                                </button>
+                                <button type="button" name="google">
+                                  <a href="{% provider_login_url 'google' %}">Google</a>
+                                </button>
                             </div>
                             <div id="register-link" class="text-right">
                               <a href="{% url 'register' %}">Register here</a>

@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 """
 
 import os
+import allauth
 from pathlib import Path
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -39,6 +40,20 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+    'social_django',
+
+    # local
+    # 'User',
+
+    # allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+
+    # providers
+    'allauth.socialaccount.providers.facebook',
+    'allauth.socialaccount.providers.google',
 
 ]
 
@@ -51,6 +66,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+
+    'social_django.middleware.SocialAuthExceptionMiddleware',
 ]
 
 ROOT_URLCONF = 'Task.urls'
@@ -66,6 +83,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+
+                'social_django.context_processors.backends',
+                # 'allauth.account.auth',
+                'social_django.context_processors.login_redirect',
             ],
         },
     },
@@ -137,3 +158,15 @@ STATICFILES_DIRS = (
 )
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'blog/static')
+
+SITE_ID = 1
+
+# LOGIN_REDIRECT_URL = "http://127.0.0.1:8000/home/"
+
+# SOCIAL_AUTH_FACEBOOK_KEY = "2868942513356565"
+# SOCIAL_AUTH_FACEBOOK_SECRET = "df2c4dbdfd80dd0201df4b20f1049f20"
+
+#AUTHENTICATION_BACKENDS = [
+#    'django.contrib.auth.backends.ModelBackend',
+#    'allauth.account.auth.backends.AuthenticationBackend',
+#]

@@ -12,3 +12,6 @@ class Post(models.Model):
     def __str__(self):
         return self.title + ' - ' + str(self.user)
 
+class Profile(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    address = models.CharField(max_length=200)

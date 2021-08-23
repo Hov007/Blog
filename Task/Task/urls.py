@@ -25,9 +25,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("blog.urls")),
     path('i18n/', include('django.conf.urls.i18n')),
+    path("accounts/", include("allauth.urls")),
+    path('oauth/', include('social_django.urls', namespace='social')),
 
 ]
 
 urlpatterns += i18n_patterns(
     path('', include("blog.urls")),
+    prefix_default_language=False
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_URL)
